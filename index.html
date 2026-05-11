@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ro"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curiozități despre plante - Botanica Curioasă</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#061b0e","on-primary-fixed": "#0b2013","on-tertiary-fixed": "#400200",
+          "secondary": "#56642b","on-background": "#1b1c1a","on-primary-container": "#819986",
+          "secondary-fixed": "#d9eaa3","inverse-on-surface": "#f2f1ed","on-secondary-fixed": "#161f00",
+          "inverse-primary": "#b4cdb8","primary-fixed": "#d0e9d4","inverse-surface": "#2f312e",
+          "surface": "#faf9f5","on-primary": "#ffffff","surface-variant": "#e3e2df",
+          "surface-container-highest": "#e3e2df","surface-container-high": "#e9e8e4",
+          "tertiary-fixed-dim": "#ffb4a7","primary-fixed-dim": "#b4cdb8",
+          "on-primary-fixed-variant": "#364c3c","surface-container": "#efeeea",
+          "surface-bright": "#faf9f5","on-secondary": "#ffffff","tertiary": "#370100",
+          "surface-container-lowest": "#ffffff","on-surface-variant": "#434843",
+          "on-error-container": "#93000a","on-tertiary-container": "#e3715f",
+          "outline-variant": "#c3c8c1","background": "#faf9f5","tertiary-container": "#5a0c04",
+          "primary-container": "#1b3022","on-secondary-container": "#5a682f","on-tertiary": "#ffffff",
+          "on-tertiary-fixed-variant": "#80281b","secondary-fixed-dim": "#bdce89",
+          "error-container": "#ffdad6","on-surface": "#1b1c1a","surface-tint": "#4d6453",
+          "surface-dim": "#dbdad6","on-secondary-fixed-variant": "#3e4c16",
+          "secondary-container": "#d6e7a1","tertiary-fixed": "#ffdad4","error": "#ba1a1a",
+          "surface-container-low": "#f4f4f0","outline": "#737973","on-error": "#ffffff"
+        },
+        "borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},
+        "spacing": {"stack-sm": "8px","section-gap": "64px","stack-md": "24px","gutter": "16px","container-margin": "20px","stack-lg": "40px"},
+        "fontFamily": {"body-md": ["Work Sans"],"headline-md": ["EB Garamond"],"label-caps": ["Work Sans"],"headline-sm": ["EB Garamond"],"headline-lg-mobile": ["EB Garamond"],"body-lg": ["Work Sans"]},
+        "fontSize": {
+          "body-md": ["16px", {"lineHeight": "1.6","fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "1.3","fontWeight": "500"}],
+          "label-caps": ["12px", {"lineHeight": "1.0","letterSpacing": "0.1em","fontWeight": "600"}],
+          "headline-sm": ["20px", {"lineHeight": "1.4","fontWeight": "500"}],
+          "headline-lg-mobile": ["32px", {"lineHeight": "1.2","letterSpacing": "-0.02em","fontWeight": "600"}],
+          "body-lg": ["18px", {"lineHeight": "1.6","fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .bg-watermark { background-image: radial-gradient(circle at top right, rgba(77, 100, 83, 0.03) 0%, transparent 60%); }
+  body { background-color: #faf9f5; background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10c20 20 80 80 80 80M90 10C70 30 10 90 10 90" stroke="%234B3D33" stroke-width="0.5" stroke-opacity="0.05" fill="none"/></svg>'); }
+  .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #faf9f5; }
+  ::-webkit-scrollbar-thumb { background: #e3e2df; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #c3c8c1; }
+  .bg-glass { background-color: rgba(250,249,245,0.85); backdrop-filter: blur(12px); }
+  /* Page visibility */
+  .page-section { display: none; }
+  .page-section.active { display: block; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+
+<!-- Top Navigation (Mobile Only) -->
+<header class="md:hidden sticky top-0 z-50 w-full bg-surface/85 backdrop-blur-md border-b border-on-surface/10">
+  <div class="flex justify-between items-center px-container-margin py-4 w-full">
+    <button id="mobile-menu-btn" class="text-primary active:scale-95 transition-transform duration-200">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <h1 class="font-headline-md text-headline-md font-semibold text-primary italic">Curiozități despre plante</h1>
+    <button class="text-primary active:scale-95 transition-transform duration-200">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile sidebar overlay -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/30 z-40 hidden md:hidden" onclick="closeMobileMenu()"></div>
+
+<div class="flex flex-col md:flex-row min-h-screen max-w-[1920px] mx-auto">
+
+  <!-- Sidebar Navigation -->
+  <aside id="sidebar" class="fixed md:sticky top-0 left-0 h-screen w-80 z-50 md:z-40 bg-surface border-r border-surface-container shadow-lg flex-shrink-0
+    transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out
+    flex flex-col py-6">
+    <div class="px-6 pb-8 mb-4 border-b border-on-surface/10">
+      <h2 class="font-headline-sm text-headline-sm text-primary">Curiozități despre plante</h2>
+    </div>
+    <nav class="flex-1 overflow-y-auto">
+      <ul class="space-y-2">
+        <li>
+          <button onclick="showPage('acasa')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="acasa">
+            <span class="material-symbols-outlined">home</span> Acasă
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('vanilia')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="vanilia">
+            <span class="material-symbols-outlined">spa</span> Vanilia
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('hyperion')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="hyperion">
+            <span class="material-symbols-outlined">vertical_align_top</span> Hyperion (Sequoia)
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('scortisoara')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="scortisoara">
+            <span class="material-symbols-outlined">eco</span> Scorțișoară
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('baobab')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="baobab">
+            <span class="material-symbols-outlined">local_florist</span> Baobab
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('piper')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="piper">
+            <span class="material-symbols-outlined">grain</span> Piper
+          </button>
+        </li>
+        <li>
+          <button onclick="showPage('sequoia')" class="nav-btn w-full flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 rounded-full hover:bg-surface-variant/50 transition-all duration-200 ease-in-out font-body-md text-body-md" data-page="sequoia">
+            <span class="material-symbols-outlined">forest</span> Sequoia
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 w-full md:ml-0">
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: ACASA -->
+    <div id="page-acasa" class="page-section active">
+      <!-- Hero Section -->
+      <section class="relative w-full min-h-[819px] flex items-center justify-center px-container-margin py-stack-lg overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <img alt="Hero Botanical Image" class="w-full h-full object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAVFq31TrpQX3Rx0eWWSc2gRntKoQWXDgrCLF5o7d0qrfXlSE5lR8D4NzqW-WtAEp0CVFSIq9GTU9_H8u_HFlTB8ZfQuiwUO0hW8otzT3n14mGRDtxo1xN9bZztamH1Kh_yq681EM07xgKt2QGPyIL6970i8MjX2xZ8tV7nPJfR1IhExyRgD4Ptj42g1woDLwYvHCYPIv2uir7UCwERt4Kbi_G9IeRRWi8ZbCFoQHlGlmRjeXA6PDU2BSJUP1jO1W4Zwgu3M8gDA2y"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center bg-surface/85 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-sm border border-outline-variant/30">
+          <span class="inline-block px-4 py-1 mb-6 rounded-full bg-secondary-container text-on-secondary-container font-label-caps text-label-caps">Explorare Botanică</span>
+          <h2 class="font-headline-lg-mobile md:text-5xl font-bold text-primary mb-6 italic">Arhitectura tăcută a naturii</h2>
+          <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8">Descoperiți secretele fascinante ale regnului vegetal. De la giganții tăcuți ai pădurilor primordiale până la cele mai delicate orhidee, fiecare plantă ascunde o poveste de adaptare și supraviețuire.</p>
+          <button onclick="showPage('vanilia')" class="inline-flex items-center justify-center px-8 py-3 bg-primary-container text-on-primary rounded-full font-body-md text-body-md hover:bg-primary transition-colors duration-300">Începeți explorarea</button>
+        </div>
+      </section>
+      <!-- Specimenarium Grid Section -->
+      <section class="px-container-margin py-section-gap max-w-7xl mx-auto">
+        <div class="text-center mb-stack-lg">
+          <h3 class="font-headline-md text-headline-md text-primary italic mb-4">Specimenarium</h3>
+          <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">O colecție curată de specimene botanice remarcabile, fiecare ilustrând ingeniozitatea evolutivă a naturii.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <!-- Card 1: Vanilia -->
+          <article class="group bg-surface rounded-2xl overflow-hidden border border-outline-variant/30 hover:shadow-md transition-shadow duration-300 flex flex-col">
+            <div class="relative h-64 overflow-hidden bg-surface-container-low">
+              <img alt="Vanilla Orchid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyzgzhtSogCRKNvEk2S7YOhDKUovhrdbnULrn9ywazhX1YUwEi0W527PKkzX5l4cr1v-fd4YeIw9km5BAxFgQM5DLXa5eIfWxqrNWuRs8rRYhbWjXyYCJgs-KPEBNmlZ76cqi5ygom7VD2j0mBjQoBcO85JrLQyk_0DILdsunCZgXthZc0wB-5F8VmAb-QfbfEkyV42TIZU1soibiGJ9djgOLFtsK2-7uV8ZhhClcaQAxqK7jcNlViKwZyHsKkBKtGyqMZLo_rHT0u"/>
+              <div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-caps text-label-caps">Orhidee</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col bg-[#F0F2E8]/40">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-secondary text-sm">spa</span>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Vanilia</h4>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-4 flex-1">Singura orhidee din lume care produce un fruct comestibil. Polenizarea ei naturală depinde exclusiv de o specie rară de albină Melipona.</p>
+              <button onclick="showPage('vanilia')" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-200 font-label-caps text-label-caps">Citește mai mult <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+            </div>
+          </article>
+          <!-- Card 2: Hyperion -->
+          <article class="group bg-surface rounded-2xl overflow-hidden border border-outline-variant/30 hover:shadow-md transition-shadow duration-300 flex flex-col">
+            <div class="relative h-64 overflow-hidden bg-surface-container-low">
+              <img alt="Redwood Forest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5h6W6cC1l5E233qf2RHbXKBY6WtwxOdUqqwSHq0sTxVXsL8NiZM6q7BPKaNEgxeQsVQ2jfN9ctjoeB_ph5IN79BC8RplT1teJORbtWTWsKErTcpiUObdOKjRO5l0c0qtuJYE_VuMuGkhdOx6Nw_L1le_nq2eyJAkn8z4TDi2_08235jdGp5fN_YpEbvyWt-VklYwByz6EsX85g3atBl3_QOCzwV4SJjcq-dtu8w9MtgI6inUqCfPUGo6GVZo7Lwr0ifzzsc7FmmSA"/>
+              <div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-caps text-label-caps">Conifer</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col bg-[#F0F2E8]/40">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-secondary text-sm">vertical_align_top</span>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Hyperion (Sequoia)</h4>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-4 flex-1">Cel mai înalt arbore viu cunoscut din lume, măsurând 115.92 metri. Locația sa exactă este păstrată secretă pentru a-l proteja de vizitatori.</p>
+              <button onclick="showPage('hyperion')" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-200 font-label-caps text-label-caps">Citește mai mult <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+            </div>
+          </article>
+          <!-- Card 3: Scorțișoară -->
+          <article class="group bg-surface rounded-2xl overflow-hidden border border-outline-variant/30 hover:shadow-md transition-shadow duration-300 flex flex-col">
+            <div class="relative h-64 overflow-hidden bg-surface-container-low">
+              <img alt="Cinnamon Bark" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCJsIvYKOF2eS7Bqf2HWMP1cbAv-X3TzUDPyCbFLa1QFF1pZ7aaIK13TfM5dEcO95sE2nYZ77r57lotnQ5yS4zwSTNBvpocxj5IjYC6GgM0WEeZ35W_q5ekWIyP9dAyr4KlT3CtYyrra3oUj0595s6hKyumNHgg_7tFtRdXMhceK4eDM8dkYYIf8KSNlvo72gpeBUAs27kq2cqUre6ovfS3bHOMD2zUcjwomGCpS1Ch_KCv_5KBUiAgCb_qPmTBRd1z6EXl67jGEYC"/>
+              <div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-caps text-label-caps">Mirodenie</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col bg-[#F0F2E8]/40">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-secondary text-sm">eco</span>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Scorțișoară</h4>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-4 flex-1">Scorțișoara adevărată (Cinnamomum verum) se obține exclusiv din scoarța interioară a arborelui. Odată considerată mai valoroasă decât aurul.</p>
+              <button onclick="showPage('scortisoara')" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-200 font-label-caps text-label-caps">Citește mai mult <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="bg-surface-container w-full py-stack-lg border-t border-on-surface/10 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center px-container-margin max-w-[1920px] mx-auto space-y-6 md:space-y-0">
+          <h2 class="font-headline-sm text-headline-sm text-on-surface italic">Curiozități despre plante</h2>
+          <nav><ul class="flex flex-wrap justify-center gap-6">
+          </ul></nav>
+          <p class="font-label-caps text-label-caps text-on-surface-variant text-center">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: VANILIA -->
+    <div id="page-vanilia" class="page-section">
+      <div class="flex flex-col min-h-screen">
+        <main class="flex-1 flex flex-col relative w-full overflow-x-hidden">
+          <section class="py-section-gap px-container-margin w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-gutter md:gap-stack-lg items-center md:items-start min-h-screen">
+            <!-- Imagery Column -->
+            <div class="w-full md:w-1/2 flex flex-col gap-gutter">
+              <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high flex items-center justify-center">
+                <img alt="Vanilla orchid plant" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrUxjGhyv9a9yxgPqefnirh7aMop6eSFS-4L5Pl6-91mGORMH6heLcyAuZ76blDcWP4lEt6V_tBxw5kOblzfApbjaywgusecjlcSSEClCgPgEGuWVXOWZ8lgeqzH5AjAIUXuelTSenkf0HrX31rG76pfuWHb2zu2j96o_0p6MROBiQvrGqrR8Vjj2qKk25dU9y6KrPktGDx7p7VFD_dh-DgZ26k3o2S1CeqMhXTKJNhqvhe9EsnTc8751SBQyg2-mhZxVQTgTLj69X"/>
+              </div>
+              <div class="flex gap-gutter w-full">
+                <div class="relative flex-1 aspect-square rounded-lg overflow-hidden bg-surface-container">
+                  <img alt="Vanilla beans" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxNHD6FZ4qoMzSV9fNR06qPY80vmf2S0LmwxedNpfAu1teMVrDi2tzs7RR81iRUqsi6GWSvhdTy8Kk__KNwZ1DcjW35qEWi0B7dt-_iO68UlzaITW9yilMxnUVqf8j7iD6xZq5OCzurwg4k-J80duwoN8GLiUXi1LO5AXiPKMOeXy0fC8b4tzvrUWDDd3vc6XyWStAgYzvUk2V5YkvjSPXGSQZxG0vmD1PZtA7RCoGLBq4WKcF9idkz41ZaOODzNDpW5oaIGpNsT5p"/>
+                </div>
+                <div class="relative flex-1 aspect-square rounded-lg overflow-hidden bg-surface-container">
+                  <img alt="Totonac cultural elements" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeYMLE5j54rMsIeO93fU0R6oQUwjK4xxFYFEn372B5rRM6CAqibFzMnFyOGkrhZYD82fWn80995cbWohXIABxeAYVXQd5M1m8bUDNRZpY992H7G1eD2bC5x0WzJOaCmvQneouoy-o8DRlD7zUiv4CKR6dcSayyb7tQL5RxGHFIAYlPUwzgRebe6AMeco6oV0cx8L_uiYsiMk--4c3pZ5wococrRQpzqJywNJT3U_wkKuxVWtO9twmKZIZbKI4Nmr5dm3sVns2tBzY1"/>
+                </div>
+              </div>
+            </div>
+            <!-- Text Column -->
+            <div class="w-full md:w-1/2 flex flex-col gap-stack-md pt-stack-md md:pt-0">
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-caps text-label-caps tracking-widest uppercase">Orchidaceae</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps tracking-widest uppercase">Medicinal &amp; Culinari</span>
+              </div>
+              <h2 class="font-headline-lg-mobile md:text-[48px] md:leading-tight font-semibold text-primary">Vanilia: Aurul Verde din Mexic</h2>
+              <div class="w-12 h-1 bg-secondary rounded-full"></div>
+              <div class="prose prose-lg text-body-lg text-on-surface-variant max-w-none">
+                <p>Cunoscută științific sub numele de <em>Vanilla planifolia</em>, vanilia este singura orhidee din lume ale cărei fructe sunt cultivate pentru consum uman. Originară din pădurile tropicale ale Mexicului și Americii Centrale, această plantă agățătoare poartă cu ea o istorie bogată și complexă, fiind prețuită cu mult înainte de sosirea europenilor.</p>
+                <div class="my-stack-md p-stack-md bg-surface-container rounded-lg border-l-4 border-secondary relative overflow-hidden">
+                  <div class="absolute -right-8 -top-8 text-surface-variant/30 pointer-events-none"><span class="material-symbols-outlined text-9xl">local_florist</span></div>
+                  <h3 class="font-headline-sm text-headline-sm text-primary mb-2 relative z-10">Moștenirea Totonac</h3>
+                  <p class="font-body-md text-on-surface-variant relative z-10">Poporul Totonac din regiunea Veracruz, Mexic, au fost primii care au cultivat și folosit vanilia, pe care o numeau <em>Xanat</em>. Mitologia lor spune că planta s-a născut din sângele a doi tineri iubiți care au fost sacrificați zeilor. Pentru ei, vanilia nu era doar o aromă, ci o ofrandă sacră.</p>
+                </div>
+                <p>Adevărata provocare a cultivării vaniliei la nivel global a fost polenizarea. În mediul său natural, floarea de vanilie era polenizată aproape exclusiv de o specie specifică de albină, <em>Melipona</em>, și ocazional de colibri. Această dependență a făcut ca încercările europenilor de a cultiva planta în alte regiuni tropicale să se soldeze cu plante sănătoase, dar fără fructe.</p>
+                <div class="my-stack-md p-stack-md bg-inverse-surface text-inverse-on-surface rounded-lg">
+                  <h3 class="font-headline-sm text-headline-sm text-inverse-primary mb-2">Revoluția lui Edmond Albius</h3>
+                  <p class="font-body-md text-surface-variant">Timp de secole, monopolul mexican a rămas intact. Aceasta s-a schimbat în 1841, pe insula Réunion din Oceanul Indian. Edmond Albius, un sclav în vârstă de doar 12 ani, a descoperit o metodă simplă și eficientă de polenizare manuală folosind un bețișor de bambus sau un ghimpe. Invenția sa a transformat complet industria, permițând cultivarea vaniliei la scară largă în Madagascar și în alte regiuni tropicale.</p>
+                </div>
+                <p>Astăzi, în ciuda metodelor moderne, cultivarea vaniliei rămâne unul dintre cele mai laborioase procese agricole. Fiecare floare trebuie polenizată manual în fereastra scurtă de câteva ore în care este deschisă. Această muncă intensivă justifică de ce vanilia autentică rămâne a doua cea mai scumpă mirodenie din lume, după șofran.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="mt-auto full-width py-stack-lg bg-surface-container border-t border-on-surface/10">
+          <div class="flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0">
+            <p class="font-headline-sm text-headline-sm text-on-surface italic">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</p>
+            <ul class="flex flex-wrap justify-center gap-6 font-label-caps text-label-caps text-on-surface-variant">
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: HYPERION -->
+    <div id="page-hyperion" class="page-section">
+      <div class="flex flex-col min-h-screen">
+        <div class="flex-1 px-container-margin py-section-gap max-w-7xl mx-auto w-full">
+          <!-- Hero / Vertical Layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter min-h-[819px]">
+            <!-- Left Column: Typography & Data -->
+            <div class="lg:col-span-5 flex flex-col justify-center space-y-stack-md z-10 lg:pr-8">
+              <div class="inline-flex items-center gap-2 bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full w-max">
+                <span class="material-symbols-outlined text-sm">vertical_align_top</span>
+                <span class="font-label-caps text-label-caps">Record Mondial</span>
+              </div>
+              <h1 class="font-headline-lg-mobile md:text-[56px] md:leading-[1.1] font-semibold text-primary">Hyperion: <br/><span class="italic text-secondary">Titanul Tăcut</span></h1>
+              <p class="font-label-caps text-label-caps text-on-surface-variant">Sequoia sempervirens</p>
+              <p class="font-body-lg text-body-lg text-on-surface mt-stack-md">Ascuns adânc în parcul național Redwood, Hyperion sfidează gravitația. Este cel mai înalt arbore viu cunoscut pe Pământ, o coloană vie de o vechime inestimabilă, ale cărei ramuri superioare se pierd în ceața coastei californiene.</p>
+              <div class="grid grid-cols-2 gap-4 mt-stack-lg p-6 bg-surface-container-low rounded-xl border border-surface-variant/50">
+                <div class="flex flex-col">
+                  <span class="font-label-caps text-label-caps text-on-surface-variant mb-1">Înălțime Confirmată</span>
+                  <span class="font-headline-md text-headline-md text-primary font-semibold">115.92m</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-label-caps text-label-caps text-on-surface-variant mb-1">Vârstă Estimată</span>
+                  <span class="font-headline-md text-headline-md text-primary font-semibold">~600-800 Ani</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right Column: Majestic Vertical Image -->
+            <div class="lg:col-span-7 relative h-[614px] lg:h-full w-full rounded-2xl overflow-hidden mt-8 lg:mt-0 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-surface-container-high">
+              <img alt="Privire de jos spre coroana unui Sequoia uriaș" class="absolute inset-0 w-full h-full object-cover object-bottom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf7OOTu1VtM_4Pjaf-6yeRa9Kip0OCDooBrk2v300lHyiZ74NcDdTsO4t71PFiMIVjukgS35oGASimao8kTbqHpTWui4Vs0pZq_2UHav8V5fW99W0d1tilusGEyWEu2yxTJIyON7wrJ-7f-PVn2CKaweP7bYROCy4jW7TjAHafqk-t5DbU570WAN3JKWBCmGtF7jposZIKCg9B5a1Imj1iWtdPM0WjB-Ved2NSGkE4o6JbJGtRvSEI9M8SXdRHVQA3wMBYkL74seZG"/>
+              <!-- Fog Drip Overlay Glass Card -->
+              <div class="absolute bottom-6 left-6 right-6 lg:left-auto lg:right-8 lg:bottom-8 lg:w-80 bg-surface/85 backdrop-blur-md p-6 rounded-xl border border-white/20">
+                <div class="flex items-start gap-3 mb-2">
+                  <span class="material-symbols-outlined text-secondary mt-1">water_drop</span>
+                  <div>
+                    <h3 class="font-headline-sm text-headline-sm text-primary mb-1">Mecanismul „Fog Drip"</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm">La peste 100m, gravitația face imposibilă pomparea apei din sol. Hyperion supraviețuiește absorbind umezeala direct din ceața densă marină prin acele sale superioare.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Conservation Section -->
+          <div class="mt-section-gap max-w-3xl mx-auto text-center px-4 py-12 border-y border-outline-variant/30">
+            <span class="material-symbols-outlined text-4xl text-on-tertiary-container mb-4">location_off</span>
+            <h2 class="font-headline-md text-headline-md text-primary mb-4">O Locație Secretă</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Pentru a-l proteja de vandalism și de tasarea solului cauzată de traficul turistic excesiv, locația exactă a lui Hyperion rămâne un secret strict păstrat. Cei care încearcă să-l găsească riscă amenzi severe, totul pentru a asigura supraviețuirea acestui titan tăcut pentru generațiile viitoare.</p>
+          </div>
+        </div>
+        <footer class="mt-auto py-stack-lg border-t border-on-surface/10 bg-surface-container">
+          <div class="flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0">
+            <p class="font-label-caps text-label-caps text-on-surface-variant">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</p>
+            <div class="font-headline-sm text-headline-sm text-on-surface italic">Curiozități despre plante.</div>
+            <ul class="flex flex-wrap justify-center gap-6">
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: SCORTISOARA -->
+    <div id="page-scortisoara" class="page-section">
+      <div class="flex flex-col min-h-screen">
+        <main class="flex-1 flex flex-col">
+          <!-- Hero Section -->
+          <section class="relative w-full h-[614px] min-h-[400px] flex items-end pb-stack-lg px-container-margin md:px-section-gap">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+              <img alt="Bastoane de scorțișoară" class="w-full h-full object-cover opacity-90 mix-blend-multiply filter sepia-[0.2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTnERzUc9Lmt1HpQyvGyuMIDPdyQUE1C1kFes9eVBddrCduSDbwnqqqOGjKEWlVK0uR86YtUMfyUFeCLLm9IZOupkG5nMDUhsGisipPEt4gOcE0ne2Irw7MG0ZpPP7TUBjXKDG4L337Qn29B-NYhDYTs1iH_Txd1Lgm6f-j-rrvhuApHaDoWuaE6_nfhQdY_xxEe7w39kgfs9jWQ8S-vQsvzPipsPCi426w2DZZMGr52_ofYa0Z5m7SzD9lxcXWpapSbYY5mpnOME1"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-3xl">
+              <span class="inline-block px-3 py-1 mb-stack-sm rounded-full bg-[#F0F2E8] text-[#4B3D33] font-label-caps text-label-caps border border-[#4B3D33]/10">Cinnamomum verum</span>
+              <h2 class="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-5xl text-primary mb-stack-sm">Scorțișoara: Scoarța Prețioasă</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">O călătorie milenară de la misterioasele rute comerciale antice la delicatețea botanică a scoarței interioare.</p>
+            </div>
+          </section>
+          <!-- Article Content -->
+          <article class="flex-1 px-container-margin md:px-section-gap py-section-gap max-w-5xl mx-auto w-full">
+            <!-- Bento Grid: The Two Faces of Cinnamon -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+              <div class="md:col-span-12 bg-[#F0F2E8] rounded-xl p-stack-md md:p-stack-lg border border-[#4B3D33]/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-6xl">eco</span></div>
+                <h3 class="font-headline-md text-headline-md text-primary mb-stack-md relative z-10">Un condiment născut din lemn</h3>
+                <p class="font-body-md text-on-surface-variant mb-4 relative z-10">Spre deosebire de majoritatea condimentelor care provin din fructe, flori, frunze sau rădăcini, scorțișoara este unică prin faptul că reprezintă scoarța interioară uscată a unor specii de arbori din genul <em>Cinnamomum</em>. Această metodă de recoltare necesită o îndemânare precisă, decupând doar stratul cambial fin.</p>
+              </div>
+              <div class="md:col-span-6 bg-surface-container rounded-xl p-stack-md border border-outline-variant/30 flex flex-col">
+                <h4 class="font-headline-sm text-headline-sm text-secondary mb-2">Ceylon (Scorțișoara Adevărată)</h4>
+                <p class="font-body-md text-on-surface-variant mb-stack-md flex-1"><em>Cinnamomum verum</em>, originară din Sri Lanka. Se distinge prin straturi multiple, subțiri ca hârtia, rulată delicat. Are o culoare brun-deschis și un profil aromatic subtil, dulce și floral.</p>
+                <div class="h-48 rounded-lg overflow-hidden relative">
+                  <img alt="Ceylon Cinnamon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKY9Z6FkLea3a1FY1Sfe0iWqxqlDbtfyaWo4ORC_gVodyoV1dvlqk3AnMkbCRKwmd1SMoNVrINebYuRplsqLjC0vIWLnvIKqHrNDiv9uYZNXKHM38egZxpBhJliwvFAYE3wDHYLn2eevTv2jUpvPPngorjFXLN4JYVJIlcT5cmLW9IVejZfRld_9Mio-DgIoW019lI24RwNix0bPOY_3ZuvRLws9Py9aJ0LNJ_CjjWKpkqH5KVGl9IN2GJ9kun14HEl16pYuO6Tbu3"/>
+                </div>
+              </div>
+              <div class="md:col-span-6 bg-surface-container rounded-xl p-stack-md border border-outline-variant/30 flex flex-col">
+                <h4 class="font-headline-sm text-headline-sm text-tertiary-container mb-2">Cassia (Scorțișoara Comună)</h4>
+                <p class="font-body-md text-on-surface-variant mb-stack-md flex-1"><em>Cinnamomum cassia</em>, originară din China. Aceasta este specia predominantă în comerț. Format dintr-un singur strat gros de scoarță, greu de rupt, cu o aromă puternică, picantă și culoare roșiatică intensă.</p>
+                <div class="h-48 rounded-lg overflow-hidden relative">
+                  <img alt="Cassia Cinnamon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFno5sDBW5n7vlkxkAG8c28OT3cwFCs9TlxhGnYkys_9uvJsejHEagYZIjE4gUzVD_JEeQ15q6h3JYhBKMc7k_af8vOfbJiprr-7WAkVt8rOoWs6dKWHAAILDhBDXwWN1qp9sAehLKtOLJMIOL2RLo2fvdodiZ3DyzAwsqvOM-FYVK4JUkxqKz5cGTgvT_TSYS-v6D1MPWn89okuvmT2pwSb1WVLNg4Iea_aEasnZu-y13gnSp78I2g1g_Qaga43sPoBnQtqKUO6lDUZfZ"/>
+                </div>
+              </div>
+            </div>
+            <!-- History Section -->
+            <div class="flex flex-col md:flex-row gap-section-gap items-center py-section-gap border-t border-[#4B3D33]/10">
+              <div class="md:w-1/2 order-2 md:order-1">
+                <h3 class="font-headline-md text-headline-md text-primary mb-stack-md">Misterul Rutelor Antice</h3>
+                <p class="font-body-md text-on-surface-variant mb-4">În antichitate, scorțișoara era atât de prețioasă încât era considerată un dar demn pentru monarhi și zei. Negustorii arabi, pentru a-și proteja monopolul și a justifica prețurile exorbitante, au țesut legende complexe despre originea ei.</p>
+                <ul class="space-y-3 font-body-md text-on-surface-variant mt-stack-md">
+                  <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[18px]">eco</span><span>Menționată în Papirusul Ebers din Egiptul antic (c. 1550 î.Hr.) pentru uz medicinal și îmbălsămare.</span></li>
+                  <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[18px]">eco</span><span>În Roma Antică, era de 15 ori mai scumpă decât argintul, folosită în ritualuri funerare imperiale.</span></li>
+                  <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[18px]">eco</span><span>Căutarea ei a fost unul dintre principalele motoare ale Epocii Descoperirilor geografice.</span></li>
+                </ul>
+              </div>
+              <div class="md:w-1/2 order-1 md:order-2 w-full">
+                <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative">
+                  <img alt="Ancient map vibe with spices" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0FXoFNAkBK2j_QxLRw8SAqR0iyyVBTk-trtcVEH6Z9pJw6fSSU3t5v8cxsE2fpXIJxeIV5rCt06E4jVRNhpfaVf8oTVjaM9CVS1lOY5DXFm38SSA-4Owtsvsg71kexTKws-wT7qSPWWUgunz0r2lf24tpYgcywitVf2aAQaygiYNte2cclGHnalUxiPkEKv1rtvGabYwwaXsOfRqsDKBGfJ-QAnAAfeSyVyAv7HTNR5ovrahOvx-mQQUO7-ehlpoKjTR1jffC7gH"/>
+                </div>
+              </div>
+            </div>
+            <!-- Harvest Process -->
+            <div class="py-section-gap">
+              <h3 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center">Arta Recoltării Scoarței</h3>
+              <div class="flex flex-col md:flex-row justify-between items-center relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -z-10 transform -translate-y-1/2">
+                  <div class="h-full bg-[#C05746] w-2/3"></div>
+                </div>
+                <div class="flex flex-col items-center bg-surface p-4 rounded-xl relative w-full md:w-1/4 z-10 mb-stack-md md:mb-0">
+                  <div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center mb-3"><span class="material-symbols-outlined">content_cut</span></div>
+                  <h5 class="font-headline-sm text-headline-sm text-center mb-2">Tăierea lăstarilor</h5>
+                  <p class="font-body-md text-on-surface-variant text-center text-sm">Arborii sunt tăiați (coppicing) pentru a favoriza creșterea unor lăstari drepți și tineri.</p>
+                </div>
+                <div class="flex flex-col items-center bg-surface p-4 rounded-xl relative w-full md:w-1/4 z-10 mb-stack-md md:mb-0">
+                  <div class="w-12 h-12 rounded-full bg-[#C05746] text-white flex items-center justify-center mb-3"><span class="material-symbols-outlined">layers</span></div>
+                  <h5 class="font-headline-sm text-headline-sm text-center mb-2">Decojirea</h5>
+                  <p class="font-body-md text-on-surface-variant text-center text-sm">Scoarța exterioară aspră este răzuită, lăsând expus doar stratul interior delicat.</p>
+                </div>
+                <div class="flex flex-col items-center bg-surface p-4 rounded-xl relative w-full md:w-1/4 z-10">
+                  <div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center mb-3 border-2 border-[#C05746]"><span class="material-symbols-outlined">sunny</span></div>
+                  <h5 class="font-headline-sm text-headline-sm text-center mb-2">Rularea la soare</h5>
+                  <p class="font-body-md text-on-surface-variant text-center text-sm">Scoarța fină se usucă la soare, rulându-se natural în forma familiară de "baston" (quill).</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </main>
+        <footer class="bg-surface-container border-t border-on-surface/10 py-stack-lg mt-auto">
+          <div class="flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0">
+            <div class="font-headline-sm text-headline-sm text-on-surface italic">Curiozități despre plante</div>
+            <div class="flex flex-wrap justify-center gap-6">
+            </div>
+            <div class="font-label-caps text-label-caps text-on-surface-variant text-center md:text-right">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: BAOBAB -->
+    <div id="page-baobab" class="page-section">
+      <div class="flex flex-col min-h-screen overflow-y-auto">
+        <main class="w-full max-w-7xl mx-auto px-container-margin py-stack-lg flex flex-col gap-section-gap flex-grow">
+          <!-- Hero Section -->
+          <section class="w-full flex flex-col gap-stack-md">
+            <div class="w-full h-[460px] rounded-xl overflow-hidden relative shadow-sm">
+              <img alt="Baobab tree" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6-z2J-vm7TYQRSPhgZfMLjWznG9MVobRP9gUggJJqBZGxfRmsTVbFNRslBhOobzjiCZsZVNWc6JO-ZRPUmG_L05CFKvEqS1p3BEEt5EBkxNjTF5uM1eFCuVkruSwyrSDqaRce1DD9dp6BQvPcLZxg_yH5ERGrJWt7YoQ6AHsokwc66ZbeeTkHCKndyKkXDdaKhrHj2Lgh3T6pBgCeASSpNG3yoUhOWCCBrC2yo01GHo_cxQYlxL8HaNwnXxLoiscKx2JwrUaYGHrH"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent flex items-end p-stack-md">
+                <span class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">Flora Africană</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 max-w-3xl">
+              <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Baobab</h1>
+              <p class="font-body-lg text-body-lg text-on-surface-variant italic">Adansonia digitata — Copacul Vieții</p>
+            </div>
+          </section>
+          <!-- Content Bento Grid -->
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="col-span-1 md:col-span-2 bg-surface-container rounded-xl p-stack-md relative overflow-hidden bg-watermark flex flex-col justify-center">
+              <div class="absolute -right-12 -top-12 w-48 h-48 bg-inverse-primary/20 rounded-full blur-2xl pointer-events-none"></div>
+              <div class="relative z-10 flex flex-col gap-stack-sm">
+                <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary mb-2"><span class="material-symbols-outlined">water_drop</span></div>
+                <h3 class="font-headline-md text-headline-md text-primary">Rezervorul Savanei</h3>
+                <p class="font-body-md text-on-surface-variant">Spre deosebire de alți arbori, baobabul nu are inele anuale de creștere în mod tradițional. Trunchiul său masiv, adesea cu o circumferință impresionantă, acționează ca un burete gigantic. În timpul scurtului sezon ploios, un baobab matur poate absorbi și stoca zeci de mii de litri de apă în țesutul său fibros, asigurându-și supraviețuirea în lungile luni de secetă aspră.</p>
+              </div>
+            </div>
+            <div class="col-span-1 bg-surface-variant rounded-xl p-stack-md flex flex-col justify-between items-start border border-outline-variant/30">
+              <div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-primary mb-4 shadow-sm"><span class="material-symbols-outlined">hourglass_bottom</span></div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Martori ai Timpului</h3>
+                <p class="font-body-md text-on-surface-variant">Aceste creaturi botanice pot trăi peste 2.000 de ani. Ritmul lor lent de creștere și capacitatea de a se regenera chiar și după ce trunchiul a fost grav deteriorat le conferă o reziliență legendară.</p>
+              </div>
+            </div>
+            <div class="col-span-1 md:col-span-3 bg-primary-container text-on-primary-container rounded-xl flex flex-col md:flex-row overflow-hidden shadow-sm">
+              <div class="p-stack-md flex-1 flex flex-col justify-center gap-stack-sm">
+                <h3 class="font-headline-md text-headline-md text-on-primary">Inima Ecosistemului</h3>
+                <p class="font-body-md opacity-90">Mai mult decât un simplu depozit de apă, baobabul este un micro-ecosistem. Fructele sale, bogate în vitamina C, hrănesc primate și elefanți. Scoarța sa este consumată de animale în perioade de criză, iar cavitățile uriașe din trunchi oferă adăpost pentru păsări, reptile și, de-a lungul istoriei, chiar și pentru comunitățile umane.</p>
+              </div>
+              <div class="md:w-1/3 min-h-[250px] relative">
+                <img alt="Baobab texture" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnIN1NmOWwc1EIkqv0Pg-8m0o_A6In-y8bIoISLkUC-nqpHppyV7BqcPnreUF4JB-zvwBdwYu7A8JmSmkS9sOyydpO_71o0BCgGcyMur0IRVGHtkS7Hkrtc3w59fryLRHsbnymPQHb-T6-3lSZLwu8IU8QrLSMlc78KoW6XxT9FiO7g3JMNu9NSPIv4AYokKFB7IwxMRCa7IyH4uJBNtqNoDmdEm0De8JfwVyoQESLxrbbaRq8BDXYMKG4phYitsX-_eRrY0HbWaaH"/>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="w-full py-stack-lg border-t border-on-surface/10 bg-surface-container mt-auto">
+          <div class="flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0">
+            <p class="font-label-caps text-label-caps text-on-surface-variant">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</p>
+            <nav class="flex gap-stack-md">
+            </nav>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: PIPER -->
+    <div id="page-piper" class="page-section">
+      <div class="flex flex-col min-h-screen">
+        <main class="flex-1 overflow-y-auto w-full relative">
+          <div class="max-w-5xl mx-auto px-container-margin py-stack-lg mb-section-gap">
+            <!-- Hero Section -->
+            <section class="mb-section-gap relative rounded-xl overflow-hidden shadow-sm bg-[#F0F2E8]">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div class="p-8 md:p-12 flex flex-col justify-center">
+                  <div class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed-dim/30 text-[#4B3D33] font-label-caps text-label-caps mb-4 self-start">
+                    <span class="material-symbols-outlined text-[16px] mr-1">history_edu</span> Condiment Istoric
+                  </div>
+                  <h2 class="font-headline-md text-headline-md md:text-4xl lg:text-5xl text-primary mb-6 italic leading-tight">Piperul: Aurul Negru <br/><span class="text-secondary font-headline-sm not-italic opacity-80">(Piper nigrum)</span></h2>
+                  <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">O liană cățărătoare ale cărei fructe au redefinit hărțile lumii, au declanșat Epoca Marilor Descoperiri și au fost folosite ca monedă de schimb valoroasă în comerțul antic și medieval.</p>
+                </div>
+                <div class="h-64 md:h-auto relative">
+                  <img alt="Close up of black peppercorns" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJmINLc5kNtF3bNvRaDsz4gpd9btEKqW4ksy01kC25Whup_0NoNqwGTjMWMx2vknOEissLd_hEFfNyVzQBZs__Ad8y5SpP0H9Y9techhBkry-OosRKOwdXRaTAyJmsFh00f5UWX04wbfk4OUqRNu2IT_zuvbygLixgTUZHRbbACUdDvXWymBwAOHcvGvmJMAYvMK_VAPpiuPgowz6qHW2oi6ArDc392lbwQEKSBzr12FfgvHRkVjX_cgIX6xk5jvHyxuN4oX27OGe"/>
+                </div>
+              </div>
+            </section>
+            <!-- Processing Triad -->
+            <section class="mb-section-gap">
+              <h3 class="font-headline-sm text-headline-sm text-primary mb-8 text-center border-b border-outline-variant/30 pb-4 inline-block mx-auto w-full max-w-2xl">O Plantă, Trei Condimente</h3>
+              <p class="font-body-md text-on-surface-variant text-center max-w-3xl mx-auto mb-10">Aceeași liană produce trei tipuri distincte de piper, diferența constând exclusiv în momentul recoltării și metoda de procesare post-recoltare.</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="bg-surface-container rounded-xl p-6 relative overflow-hidden group">
+                  <div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed-dim/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                  <div class="h-40 w-full mb-6 rounded-lg overflow-hidden relative">
+                    <img alt="Green peppercorns on the vine" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGQEeyNBl4W77algokrw9rOeECxvuYFEro31L6iyBi6JEdKNuOzzv9qoJPnvUbmbWXurb2OCuHa2YnGkAgIXiL0jWT_nktij495inWAqJbTYX-2qIAv4YTDeRivBZR2jy00LqQlo7jX_wqqYWe0mlfMhYW4MamTYOzE74IajS1mi-RF2FlKqyJ5QyHykDDPatZWTz2TiRIeRYYXfTPpda9b4QHJo9cYTYf1fLkbPBcVrizhqgncLPNbbp8s2UZROgYZS1QmZMFJ7J4"/>
+                  </div>
+                  <h4 class="font-headline-sm text-headline-sm text-primary mb-2 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-[#8A9A5B] inline-block"></span>Piper Verde</h4>
+                  <p class="font-body-md text-on-surface-variant">Recoltat crud, înainte de maturitate. Boabele sunt tratate rapid (prin uscare la rece sau saramură) pentru a preveni oxidarea, păstrându-și culoarea verde și o aromă proaspătă, mai puțin iute.</p>
+                </div>
+                <div class="bg-[#F0F2E8] rounded-xl p-6 relative overflow-hidden group shadow-sm border border-[#4B3D33]/10">
+                  <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                  <div class="h-40 w-full mb-6 rounded-lg overflow-hidden relative">
+                    <img alt="Dried black peppercorns" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsIM62XKjbd5JF_7k4qwsfvWsXxlwpTqdADcZcvvColDVofvJ5H8EEtRhUf3IgXvGyq8tz8_-2STGSViQhTCHkMAvcSFMEiArVi8PybM42wgCbN84O4j8jl1fpbM85Q3J32e9zH-GMo6hs8PoGsLfHDgizkCXzM1QBJQKfl6SJcfksDt_UB9UjJJquGeLt8_aobH2PUIMkzF1ABYGYFShXo9qbCOJJKgVraixt-wv14alL-qW77DWHvoORS1yLph8Kg8bR0CYDFgHv"/>
+                  </div>
+                  <h4 class="font-headline-sm text-headline-sm text-primary mb-2 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-[#1B3022] inline-block"></span>Piper Negru</h4>
+                  <p class="font-body-md text-on-surface-variant">Recoltat când primele boabe de pe ciorchine devin roșiatice. Este fiert scurt și lăsat la uscat la soare. Enzimele determină înnegrirea și zbârcirea pulpei, rezultând aroma puternică și iute clasică.</p>
+                </div>
+                <div class="bg-surface-container rounded-xl p-6 relative overflow-hidden group">
+                  <div class="absolute top-0 right-0 w-24 h-24 bg-surface-variant/40 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                  <div class="h-40 w-full mb-6 rounded-lg overflow-hidden relative border border-outline-variant/30">
+                    <img alt="White peppercorns in a bowl" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf4jWzhf5oMhlbMjM3F2HSTPQNaugEY4JwUlPbNODMu0W_wObIa8SDhqUhjy0aLSGHwpJTXRsOPXmweG2QrSphAqL5pu-Hh3WWK20tZ8hz-2cw_E03FM-hqPRuMQOd2c7bDW01Qpe-x3H1J2PHKIL8WV1qjdJbRrN-GAt_YziDU0PUNPiKZ9QLba7Ms9Gm3juBaz-kAspNaRtG_MrlamtINsWra6PAm98uJQNLTqejQ6IR8AzwYgRkEhR2OlQmGA2fRW6SIuvcmYje"/>
+                  </div>
+                  <h4 class="font-headline-sm text-headline-sm text-primary mb-2 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-surface-dim inline-block border border-outline"></span>Piper Alb</h4>
+                  <p class="font-body-md text-on-surface-variant">Recoltat la maturitate deplină, roșu. Boabele sunt înmuiate în apă zile întregi (proces de topire) pentru a înlătura pulpa exterioară. Rămâne doar sămânța deschisă la culoare, cu o iuțeală diferită, adesea pământoasă.</p>
+                </div>
+              </div>
+            </section>
+            <!-- Historical Context -->
+            <section class="bg-surface-container-low rounded-xl p-8 md:p-12 relative overflow-hidden border-t-4 border-secondary-fixed-dim">
+              <div class="absolute opacity-5 -right-20 -bottom-20 pointer-events-none"><span class="material-symbols-outlined text-[300px]">sailing</span></div>
+              <div class="max-w-3xl relative z-10">
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-6">Valoarea unui Fruct: Monedă și Descoperiri</h3>
+                <div class="space-y-4 font-body-md text-on-surface-variant">
+                  <p>În Antichitate și Evul Mediu, piperul negru era atât de prețios încât era adesea folosit ca monedă de schimb, fiind acceptat pentru plata chiriilor, taxelor și chiar a răscumpărărilor (cum a fost cazul Romei asediate de vizigoți în 410 d.Hr.).</p>
+                  <ul class="space-y-3 mt-4">
+                    <li class="flex items-start"><span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]">energy_savings_leaf</span><span>Monopolul comerțului cu piper (controlat inițial de arabi și mai târziu de Veneția) a dus la prețuri exorbitante în Europa.</span></li>
+                    <li class="flex items-start"><span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]">energy_savings_leaf</span><span>Această necesitate economică de a găsi o rută maritimă directă către "Insulele Mirodeniilor" (India și Indonezia de azi) a fost catalizatorul principal pentru <strong>Epoca Marilor Descoperiri</strong>.</span></li>
+                    <li class="flex items-start"><span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]">energy_savings_leaf</span><span>Expedițiile lui Vasco da Gama și Cristofor Columb au fost finanțate în mare parte cu speranța de a ocoli intermediarii și de a asigura o sursă directă de piper și alte condimente.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="bg-surface-container border-t border-on-surface/10 py-stack-lg flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0 mt-section-gap">
+          <span class="font-headline-sm text-headline-sm text-on-surface italic">Curiozități despre plante</span>
+          <div class="flex flex-wrap justify-center gap-6">
+          </div>
+          <span class="font-label-caps text-label-caps text-on-surface-variant text-center md:text-right">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</span>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ PAGE: SEQUOIA -->
+    <div id="page-sequoia" class="page-section">
+      <div class="flex flex-col min-h-screen bg-watermark">
+        <main class="flex-1 overflow-y-auto">
+          <div class="max-w-6xl mx-auto px-container-margin py-section-gap flex flex-col gap-section-gap">
+            <!-- Hero / Asymmetric Layout -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg items-center">
+              <div class="lg:col-span-5 flex flex-col items-start gap-stack-md z-10">
+                <div class="flex flex-wrap gap-3">
+                  <span class="bg-surface-container text-on-surface-variant border border-outline-variant/30 font-label-caps text-label-caps px-4 py-1.5 rounded-full uppercase tracking-wider">Conifer</span>
+                  <span class="bg-surface-container text-on-surface-variant border border-outline-variant/30 font-label-caps text-label-caps px-4 py-1.5 rounded-full uppercase tracking-wider">Monumental</span>
+                </div>
+                <div>
+                  <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2 lg:text-[48px] lg:leading-[1.1]">Sequoia Gigant</h2>
+                  <p class="font-headline-sm text-headline-sm text-secondary italic">Sequoiadendron giganteum</p>
+                </div>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-prose">Un titan absolut al regnului vegetal, Sequoia Gigant nu deține recordul pentru înălțime, ci pentru volumul său colosal. Cu trunchiuri masive ce sfidează gravitația, acești arbori antici sunt mărturii vii ale unor epoci geologice trecute, ancorând ecosistemul munților Sierra Nevada într-o tăcere monumentală.</p>
+              </div>
+              <div class="lg:col-span-7 relative h-[614px] min-h-[500px] w-full rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20 group">
+                <div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                <img alt="Sequoia Gigant" class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-KwS9Aa5VIttgptQZed2cua9fVRjczxST0iDbGo2n4QEB4oAICGpvVyXmDLfsSTmYTEFb_wjXtEPsRaLBQI52i1JBHAW_lE-YGuoYenhnPH9rr9d3uZxKuzqnaoaQLFtaJ-38748e9fZgYDM-yc0cLg8ffj5eWS_sr3b6-IGgqpThoFBMpkspT7bet1_TBOT1DjTX4apT0dF_3prZ8frFNKUaQCE9HbVaK35yi13zDxGz_6mgU43H9y1HhSDJ9M8mh4fjBNO_mX1V"/>
+              </div>
+            </section>
+            <!-- Bento Grid for Stats -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+              <div class="bg-surface-container border border-surface-variant/50 rounded-xl p-stack-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors duration-300">
+                <div class="absolute -right-4 -top-4 opacity-5 text-primary group-hover:opacity-10 transition-opacity"><span class="material-symbols-outlined text-[120px]">layers</span></div>
+                <div class="mb-stack-lg relative z-10">
+                  <span class="material-symbols-outlined text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+                  <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase">Volum Estimativ</h3>
+                  <p class="font-headline-md text-headline-md text-primary">Până la 1,487 m³</p>
+                </div>
+                <p class="font-body-md text-on-surface-variant text-sm relative z-10">Cel mai voluminos organism viu singular de pe planetă, trunchiul său fiind o coloană masivă de biomasă.</p>
+              </div>
+              <div class="bg-surface-container border border-surface-variant/50 rounded-xl p-stack-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors duration-300">
+                <div class="absolute -right-4 -top-4 opacity-5 text-primary group-hover:opacity-10 transition-opacity"><span class="material-symbols-outlined text-[120px]">hourglass_empty</span></div>
+                <div class="mb-stack-lg relative z-10">
+                  <span class="material-symbols-outlined text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">history</span>
+                  <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase">Longevitate</h3>
+                  <p class="font-headline-md text-headline-md text-primary">&gt; 3,000 de ani</p>
+                </div>
+                <p class="font-body-md text-on-surface-variant text-sm relative z-10">Supraviețuitori ai erelor glaciare, acești arbori își măsoară viața în milenii, nu în secole.</p>
+              </div>
+              <div class="bg-surface-container border border-surface-variant/50 rounded-xl p-stack-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors duration-300">
+                <div class="absolute -right-4 -top-4 opacity-5 text-primary group-hover:opacity-10 transition-opacity"><span class="material-symbols-outlined text-[120px]">height</span></div>
+                <div class="mb-stack-lg relative z-10">
+                  <span class="material-symbols-outlined text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">straighten</span>
+                  <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase">Înălțime Medie</h3>
+                  <p class="font-headline-md text-headline-md text-primary">50 - 85 m</p>
+                </div>
+                <p class="font-body-md text-on-surface-variant text-sm relative z-10">Deși mai scunzi decât verii lor de coastă, circumferința lor masivă domină canopeaua forestieră.</p>
+              </div>
+            </section>
+            <!-- Deep Dive: Geological History -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center border-t border-outline-variant/20 pt-section-gap">
+              <div class="order-2 lg:order-1 relative aspect-square rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30">
+                <img alt="Textura scoarței de Sequoia" class="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOtTCNkGrg1F6yifCFJKpOIvjoaoEL9glbHpxEdUSd8Gy6C_Zxi6CcWgkMfA_5PVXupam3ghrO_sQufMywQKz5-PVlJiloF7pdHARCH7i1cngq_Zb-hEmWMynuLH5dlBCADDPME9K1Cq3Ezf9AyoyXhuMLyVIJHW18BAvDqQFxSbmEzeEmX5MsMZxX1ISQf-33chO1hUapGURRGX8P_K0j7DxFCFC2qBwBRMYK4miACr0XGZZ4wiSb4ZonrFcTfGcnzRExpfgYE-4u"/>
+              </div>
+              <div class="order-1 lg:order-2 flex flex-col gap-stack-md pl-0 lg:pl-stack-lg">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-px bg-secondary"></span>
+                  <h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Cronică Lemnoasă</h3>
+                </div>
+                <h4 class="font-headline-md text-headline-md text-primary">Arhitectura supraviețuirii</h4>
+                <div class="flex flex-col gap-4">
+                  <p class="font-body-md text-on-surface-variant">Relicve ale unei ere apuse, acești giganți au supraviețuit glaciațiunilor succesive datorită unor adaptări evolutive remarcabile. Scoarța lor masivă, fibroasă și extrem de groasă, acționează ca un scut izolator împotriva incendiilor forestiere periodice, care sunt, de fapt, vitale pentru reproducerea lor.</p>
+                  <ul class="flex flex-col gap-3 mt-2">
+                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">eco</span><span class="font-body-md text-on-surface-variant">Lemnul este infuzat cu taninuri puternice, conferindu-i o rezistență aproape absolută împotriva dăunătorilor și a putregaiului fungic.</span></li>
+                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">eco</span><span class="font-body-md text-on-surface-variant">Fiecare inel de creștere încapsulat în inima arborelui reprezintă o arhivă climatică vie, documentând secete, ploi și incendii de-a lungul a mii de ani.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- Footer -->
+          <footer class="py-stack-lg border-t border-on-surface/10 bg-surface-container flex flex-col md:flex-row justify-between items-center px-container-margin max-w-7xl mx-auto space-y-6 md:space-y-0">
+            <div class="text-center md:text-left">
+              <p class="font-label-caps text-label-caps text-on-surface-variant">© 2026 Liceul Teoretic "Panait Cerna" Brăila. Un proiect realizat de Răzvan Pelelungă.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            </nav>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const pages = ['acasa','vanilia','hyperion','scortisoara','baobab','piper','sequoia'];
+
+  function showPage(pageId) {
+    // Hide all pages
+    pages.forEach(p => {
+      const el = document.getElementById('page-' + p);
+      if (el) el.classList.remove('active');
+    });
+    // Show target page
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+    // Update nav active states
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      const isActive = btn.dataset.page === pageId;
+      btn.classList.toggle('bg-secondary-container', isActive);
+      btn.classList.toggle('text-on-secondary-container', isActive);
+      btn.classList.toggle('text-on-surface-variant', !isActive);
+      btn.classList.toggle('mx-2', true);
+    });
+    // Close mobile menu
+    closeMobileMenu();
+  }
+
+  function closeMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobile-overlay');
+    sidebar.classList.add('-translate-x-full');
+    sidebar.classList.remove('translate-x-0');
+    overlay.classList.add('hidden');
+  }
+
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobile-overlay');
+    sidebar.classList.toggle('-translate-x-full');
+    sidebar.classList.toggle('translate-x-0');
+    overlay.classList.toggle('hidden');
+  });
+
+  // Initialize with acasa active
+  showPage('acasa');
+</script>
+</body></html>
